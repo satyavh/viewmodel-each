@@ -1,0 +1,59 @@
+<head>
+  <title>viewmodel-each</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>Viewmodel each issue</h1>
+      <p>The issue here is that templates are not scoped correctly when repeating over templates with viewmodels attached.<br/>
+        Notice that all the repeated templates take data from the last instance
+        and that only the button in the last template works, but executes functions in all viewmodels</p>
+
+      <table class="table">
+
+        <thead>
+          <tr>
+            <th>
+              <h2>Viewmodel body (correct)</h2>
+            </th>
+            <th>
+              <h2>Viewmodel people (incorrect)</h2>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              {{#each crowd }}
+                <h3>Array data</h3>
+                {{#each this.people }}
+                  <p>{{name}}</p>
+                {{/each}}
+              {{/each}}
+
+            </td>
+            <td>
+              {{#each crowd }}
+                {{>people}}
+              {{/each}}
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</body>
+
+
+<template name="people">
+  <h3>Template People</h3>
+  {{#each people }}
+    <p>{{this.name}}</p>
+  {{/each}}
+
+  <p>Notice how this button works incorrectly as well?</p>
+  <button class="btn btn-success" {{b "click: pushName"}}>Add person</button>
+</template>
