@@ -18,3 +18,11 @@ Template.body.viewmodel
       name: 'steve'
     ]
   ]
+
+  addNewCrowd: ->
+    @crowd().push
+      people: [
+        name: 'james'
+      ,
+        name: 'bond'
+      ]

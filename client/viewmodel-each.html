@@ -1,14 +1,11 @@
-<head>
-  <title>viewmodel-each</title>
-</head>
-
 <body>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <h1>Viewmodel each issue</h1>
-      <p>The issue here is that templates are not scoped correctly when repeating over templates with viewmodels attached.<br/>
-        Notice that all the repeated templates take data from the last instance
-        and that only the button in the last template works, but executes functions in all viewmodels</p>
+      <p>The issue here is that templates are each templates are rerendered when parent data changes.</p>
+      <p>1. First add some persons</p>
+      <p>2. Now press the 'Add Crowd button'</p>
+      <p>You'll see that all template data is being reset</p>
 
       <table class="table">
 
@@ -43,6 +40,8 @@
         </tbody>
 
       </table>
+
+      <button class="btn btn-danger" {{b "click: addNewCrowd"}}>Add new Crowd</button>
     </div>
   </div>
 </body>
